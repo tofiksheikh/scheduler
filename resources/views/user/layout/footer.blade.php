@@ -87,13 +87,6 @@
 });
 
       </script>
-      <script type="text/javascript">
-          $(".weekappend").click(function () {
-               $(this).closest("tr").find(".weekappendCont").append('<div class="weekRow"><div class="d-flex align-items-center"><input type="Time" class="form-control"><span class="me-2 ms-2"> - </span> <input type="Time" class="form-control"><button class="btn removeBtn"><i class="fas fa-trash"></i></button></div></div>');
-            });
-          $('body').on('click', '.removeBtn', function () {
-               $(this).closest('.weekRow').remove();
-            });
-      </script>
+     
    </body>
 </html>

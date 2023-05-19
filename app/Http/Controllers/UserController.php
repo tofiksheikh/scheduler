@@ -219,7 +219,76 @@ if(Auth::guard('user')->attempt(['id' => $user_id, 'password' => $request->curre
   
  }
 
+public function setCustomHours(Request $request){
 
+$mysunObj = [];
+$mymonObj = [];
+$mytueObj = [];
+$mywedObj = [];
+$mythuObj = [];
+$myfriObj = [];
+$mysatObj = [];
+
+$sunT = $request->sun_total;
+$monT = $request->mon_total;
+$tueT = $request->tue_total;
+$wedT = $request->wed_total;
+$thuT = $request->thu_total;
+$friT = $request->fri_total;
+$satT = $request->sat_total;
+for ($i=1; $i < $sunT+1; $i++) { 
+ array_push($mysunObj, (object)[
+         'from_time_sun'.$i => $request->post('to_time_sun'.$i),
+    'to_time_sun'.$i => $request->post('from_time_sun'.$i)
+]);
+}
+
+for ($i=1; $i < $monT+1; $i++) { 
+ array_push($mymonObj, (object)[
+         'from_time_mon'.$i => $request->post('to_time_mon'.$i),
+    'to_time_mon'.$i => $request->post('from_time_mon'.$i)
+]);
+}
+
+for ($i=1; $i < $tueT+1; $i++) { 
+ array_push($mytueObj, (object)[
+         'from_time_tue'.$i => $request->post('to_time_tue'.$i),
+    'to_time_tue'.$i => $request->post('from_time_tue'.$i)
+]);
+}
+
+for ($i=1; $i < $wedT+1; $i++) { 
+ array_push($mywedObj, (object)[
+         'from_time_wed'.$i => $request->post('to_time_wed'.$i),
+    'to_time_wed'.$i => $request->post('from_time_wed'.$i)
+]);
+}
+
+for ($i=1; $i < $thuT+1; $i++) { 
+ array_push($mythuObj, (object)[
+         'from_time_thu'.$i => $request->post('to_time_thu'.$i),
+    'to_time_thu'.$i => $request->post('from_time_thu'.$i)
+]);
+}
+
+for ($i=1; $i < $friT+1; $i++) { 
+ array_push($myfriObj, (object)[
+         'from_time_fri'.$i => $request->post('to_time_fri'.$i),
+    'to_time_fri'.$i => $request->post('from_time_fri'.$i)
+]);
+}
+
+for ($i=1; $i < $satT+1; $i++) { 
+ array_push($mysatObj, (object)[
+         'from_time_sat'.$i => $request->post('to_time_sat'.$i),
+    'to_time_sat'.$i => $request->post('from_time_sat'.$i)
+]);
+}
+
+ // echo json_decode(json_encode($mysunObj),true);  
+
+//print_r(json_decode(json_encode($mysunObj),true));
+}
 
 
 }

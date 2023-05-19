@@ -8,6 +8,7 @@ use  App\Http\Controllers\Tutor\CertificateController;
 use  App\Http\Controllers\Tutor\EducationController;
 use  App\Http\Controllers\Tutor\TutorSchedule;
 use  App\Http\Controllers\Student\StudentController;
+use  App\Http\Controllers\Admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,38 @@ use  App\Http\Controllers\Student\StudentController;
 */
 
 
- 
+ Route::group(['prefix'=>'admin','as'=>'admin.'],function(){
+    
+    Route::controller(AdminController::class)->group(function () {
+                Route::get('signin', 'signin')->name('signin');
+                Route::get('signup', 'signup')->name('signup');
+    // Route::group(['middleware' => 'AdminAuthenticate'], function ()
+    // {
+            Route::get('dashboard', 'index')->name('dashboard');
+            Route::get('profile','profile')->name('profile');
+            Route::get('user-list', 'userList')->name('user-list');
+            Route::delete('delete-user/{id}','delete')->name('delete-user'); 
+            
+            
+      // });
+});
+Route::group(['middleware' => 'AdminAuthenticate'], function ()
+{
+            //     subjetc crud
+Route::controller(SubjectController::class)->group(function(){
+
+        Route::post('/saveSubject', 'saveSubject')->name('saveSubject');
+        Route::get('subject','index')->name('subject');
+        Route::get('add-subject','add')->name('add-subject');
+        Route::get('edit-subject/{id}','edit')->name('edit-subject');
+        Route::delete('delete-subject/{id}','delete')->name('delete-subject');     
+});
+
+
+
+
+    });
+    });
 
 // group of controller
 Route::controller(AuthController::class)->group(function () {
@@ -47,7 +79,8 @@ Route::controller(AuthController::class)->group(function () {
               Route::post('/save-branding-information', 'saveBrandingInformation')->name('save-branding-information');
               Route::post('/save-my-link-information', 'saveMyLinkData')->name('save-my-link-information');
               Route::post('/change-password', 'changePassword')->name('change-password');
-              route::get('/delete-account','deleteAccount')->name('delete-account');
+              Route::get('/delete-account','deleteAccount')->name('delete-account');
+              Route::post('/set-custom-hours', 'setCustomHours')->name('set-custom-hours');
         });
 
 

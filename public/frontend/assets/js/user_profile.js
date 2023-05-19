@@ -59,7 +59,7 @@ $("form[name='profileTabInfoForm']").validate({
         },
         submitHandler: function (form) {
             let data = new FormData($("#profileTabInfoForm")[0]);
-
+  $(".loading").show();
             $.ajax({
                 url: `${baseUrl}/save-profile-information`,
                 type: 'POST',
@@ -70,9 +70,10 @@ $("form[name='profileTabInfoForm']").validate({
                     if (data.status == "success") {
                         toastr.success(data.message);
                         location.reload(true);
-
+                         $(".loading").hide();
                     } else {
                         toastr.error(data.message);
+                         $(".loading").hide();
                     }
                 },
                 error: function (r) {
@@ -107,9 +108,10 @@ $("form[name='brandingTabInfoForm']").validate({
                     if (data.status == "success") {
                         toastr.success(data.message);
                         location.reload(true);
-
+                         $(".loading").hide();
                     } else {
                         toastr.error(data.message);
+                         $(".loading").hide();
                     }
                 },
                 error: function (r) {
@@ -144,7 +146,7 @@ $("form[name='brandingTabInfoForm']").validate({
         },
         submitHandler: function (form) {
             let data = new FormData($("#phoneInfoForm")[0]);
-
+  $(".loading").show();
             $.ajax({
                 url: `${baseUrl}/save-phone-number`,
                 type: 'POST',
@@ -155,9 +157,10 @@ $("form[name='brandingTabInfoForm']").validate({
                     if (data.status == "success") {
                         toastr.success(data.message);
                        // location.reload(true);
-
+                         $(".loading").hide();
                     } else {
                         toastr.error(data.message);
+                         $(".loading").hide();
                     }
                 },
                 error: function (r) {
@@ -183,7 +186,7 @@ $("form[name='myLinkTabInfoForm']").validate({
         },
         submitHandler: function (form) {
             let data = new FormData($("#myLinkTabInfoForm")[0]);
-
+  $(".loading").show();
             $.ajax({
                 url: `${baseUrl}/save-my-link-information`,
                 type: 'POST',
@@ -194,9 +197,10 @@ $("form[name='myLinkTabInfoForm']").validate({
                     if (data.status == "success") {
                         toastr.success(data.message);
                        // location.reload(true);
-
+                         $(".loading").hide();
                     } else {
                         toastr.error(data.message);
+                         $(".loading").hide();
                     }
                 },
                 error: function (r) {
@@ -244,7 +248,7 @@ $("form[name='myLinkTabInfoForm']").validate({
         },
         submitHandler: function (form) {
             let data = new FormData($("#changePasswordForm")[0]);
-
+  $(".loading").show();
             $.ajax({
                 url: `${baseUrl}/change-password`,
                 type: 'POST',
@@ -254,8 +258,10 @@ $("form[name='myLinkTabInfoForm']").validate({
                 success: function (data) {
                     if (data.status == "success") {
                         toastr.success(data.message);
+                         $(".loading").hide();
                     } else {
                         toastr.error(data.message);
+                         $(".loading").hide();
                     }
                 },
                 error: function (r) {
@@ -346,6 +352,7 @@ function deleteAccount(student_id) {
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
+              $(".loading").show();
             $.ajax({
                 url: `${baseUrl}/student/delete-account/${student_id}`,//"{{url('student/getWishList')}}",
                 method: "get",
@@ -356,8 +363,10 @@ function deleteAccount(student_id) {
                     if (data.status == "success") {
                         toastr.success(data.message);
                         window.location.replace(`${baseUrl}/student/logout`);
+                         $(".loading").hide();
                     } else {
                         toastr.error(data.message);
+                         $(".loading").hide();
                     }
                 },
                 error: function (r) {
@@ -394,6 +403,7 @@ function deleteAccount(){
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
+              $(".loading").show();
             $.ajax({
                 url: `${baseUrl}/delete-account`,//"{{url('student/getWishList')}}",
                 method: "get",
@@ -404,8 +414,10 @@ function deleteAccount(){
                     if (data.status == "success") {
                         toastr.success(data.message);
                         window.location.replace(`${baseUrl}/logout`);
+                         $(".loading").hide();
                     } else {
                         toastr.error(data.message);
+                         $(".loading").hide();
                     }
                 },
                 error: function (r) {

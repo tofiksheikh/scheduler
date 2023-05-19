@@ -160,10 +160,13 @@
                                                     <div class="row">
                                                         <div class="col-md-7">
                                                             <h5>Set your weekly hours</h5>
+                                                               <form action="javascript:;" id="customHrInfoForm" method="post" name="customHrInfoForm">
+                        @csrf
                                                             <table class="table">
                                                                 <tr>
                                                                     <th>
                                                                         <div class="form-check">
+                                                                            <input type="hidden" value="1" id="sun_total" name="sun_total">
                                                                           <input class="form-check-input" type="checkbox"  name="mainWeek" id="sun">
                                                                           <label class="form-check-label" for="sun">sun</label>
                                                                         </div>
@@ -174,18 +177,18 @@
                                                                         <div class="CheckCont">
                                                                             <div class="weekRow">
                                                                                 <div class="d-flex align-items-center">
-                                                                                    <input type="Time" class="form-control">
+                                                                                    <input type="Time" name="from_time_sun1" class="form-control">
                                                                                     <span class="me-2 ms-2"> - </span>
-                                                                                     <input type="Time" class="form-control">
+                                                                                     <input type="Time" name="to_time_sun1" class="form-control">
                                                                                      <button class="btn removeBtn"><i class="fas fa-trash"></i></button>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="weekappendCont">
+                                                                            <div class="weekappendsunCont weekappendCont">
                                                                             </div>
                                                                         </div>
 
                                                                     </td>
-                                                                    <td><button class="btn weekappend"><i class="fas fa-plus"></i></button></td>
+                                                                    <td><span class="btn weekappendsun"><i class="fas fa-plus"></i></span></td>
                                                                     <td>
                                                                         <div class="dropdown copyBtn">
                                                                           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -246,6 +249,7 @@
                                                                     <th>
                                                                         <div class="form-check">
                                                                           <input class="form-check-input" checked name="mainWeek" type="checkbox" id="mon">
+                                                                          <input type="hidden" value="1" id="mon_total" name="mon_total">
                                                                           <label class="form-check-label" for="mon">MON</label>
                                                                         </div>
                                                                     </th>
@@ -255,18 +259,18 @@
                                                                         <div class="CheckCont">
                                                                             <div class="weekRow">
                                                                                 <div class="d-flex align-items-center">
-                                                                                    <input type="Time" class="form-control">
+                                                                                    <input type="Time" name="from_time_mon1" class="form-control">
                                                                                     <span class="me-2 ms-2"> - </span>
-                                                                                     <input type="Time" class="form-control">
+                                                                                     <input type="Time" name="to_time_mon1" class="form-control">
                                                                                      <button class="btn removeBtn"><i class="fas fa-trash"></i></button>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="weekappendCont">
+                                                                            <div class="weekappendCont weekappendmonCont">
                                                                             </div>
                                                                         </div>
 
                                                                     </td>
-                                                                    <td><button class="btn weekappend"><i class="fas fa-plus"></i></button></td>
+                                                                    <td><span class="btn weekappendmon"><i class="fas fa-plus"></i></span></td>
                                                                     <td>
                                                                         <div class="dropdown copyBtn">
                                                                           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -327,6 +331,7 @@
                                                                     <th>
                                                                         <div class="form-check">
                                                                           <input class="form-check-input" checked name="mainWeek" type="checkbox" id="tue">
+                                                                          <input type="hidden" value="1" id="tue_total" name="tue_total">
                                                                           <label class="form-check-label" for="tue">TUE</label>
                                                                         </div>
                                                                     </th>
@@ -336,18 +341,18 @@
                                                                         <div class="CheckCont">
                                                                             <div class="weekRow">
                                                                                 <div class="d-flex align-items-center">
-                                                                                    <input type="Time" class="form-control">
+                                                                                    <input type="Time" name="from_time_tue1" class="form-control">
                                                                                     <span class="me-2 ms-2"> - </span>
-                                                                                     <input type="Time" class="form-control">
+                                                                                     <input type="Time" name="to_time_tue1" class="form-control">
                                                                                      <button class="btn removeBtn"><i class="fas fa-trash"></i></button>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="weekappendCont">
+                                                                            <div class="weekappendtueCont weekappendCont">
                                                                             </div>
                                                                         </div>
 
                                                                     </td>
-                                                                    <td><button class="btn weekappend"><i class="fas fa-plus"></i></button></td>
+                                                                    <td><span class="btn weekappendtue"><i class="fas fa-plus"></i></span></td>
                                                                     <td>
                                                                         <div class="dropdown copyBtn">
                                                                           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -408,6 +413,7 @@
                                                                     <th>
                                                                         <div class="form-check">
                                                                           <input class="form-check-input" type="checkbox" checked name="mainWeek" id="wed">
+                                                                           <input type="hidden" value="1" id="wed_total" name="wed_total">
                                                                           <label class="form-check-label" for="wed">wed</label>
                                                                         </div>
                                                                     </th>
@@ -417,18 +423,18 @@
                                                                         <div class="CheckCont">
                                                                             <div class="weekRow">
                                                                                 <div class="d-flex align-items-center">
-                                                                                    <input type="Time" class="form-control">
+                                                                                    <input type="Time" name="from_time_wed1" class="form-control">
                                                                                     <span class="me-2 ms-2"> - </span>
-                                                                                     <input type="Time" class="form-control">
+                                                                                     <input type="Time" name="to_time_wed1" class="form-control">
                                                                                      <button class="btn removeBtn"><i class="fas fa-trash"></i></button>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="weekappendCont">
+                                                                            <div class="weekappendwedCont weekappendCont">
                                                                             </div>
                                                                         </div>
 
                                                                     </td>
-                                                                    <td><button class="btn weekappend"><i class="fas fa-plus"></i></button></td>
+                                                                    <td><span class="btn weekappendwed"><i class="fas fa-plus"></i></span></td>
                                                                     <td>
                                                                         <div class="dropdown copyBtn">
                                                                           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -490,6 +496,7 @@
                                                                     <th>
                                                                         <div class="form-check">
                                                                           <input class="form-check-input" type="checkbox" checked name="mainWeek" id="thu">
+                                                                           <input type="hidden" value="1" id="thu_total" name="thu_total">
                                                                           <label class="form-check-label" for="thu">thu</label>
                                                                         </div>
                                                                     </th>
@@ -499,18 +506,18 @@
                                                                         <div class="CheckCont">
                                                                             <div class="weekRow">
                                                                                 <div class="d-flex align-items-center">
-                                                                                    <input type="Time" class="form-control">
+                                                                                    <input type="Time" name="from_time_thu1" class="form-control">
                                                                                     <span class="me-2 ms-2"> - </span>
-                                                                                     <input type="Time" class="form-control">
+                                                                                     <input type="Time" name="to_time_thu1" class="form-control">
                                                                                      <button class="btn removeBtn"><i class="fas fa-trash"></i></button>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="weekappendCont">
+                                                                            <div class="weekappendthuCont weekappendCont">
                                                                             </div>
                                                                         </div>
 
                                                                     </td>
-                                                                    <td><button class="btn weekappend"><i class="fas fa-plus"></i></button></td>
+                                                                    <td><span class="btn weekappendthu"><i class="fas fa-plus"></i></span></td>
                                                                     <td>
                                                                         <div class="dropdown copyBtn">
                                                                           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -571,6 +578,7 @@
                                                                     <th>
                                                                         <div class="form-check">
                                                                           <input class="form-check-input" type="checkbox" checked name="mainWeek" id="fri">
+                                                                           <input type="hidden" value="1" id="fri_total" name="fri_total">
                                                                           <label class="form-check-label" for="fri">fri</label>
                                                                         </div>
                                                                     </th>
@@ -580,18 +588,18 @@
                                                                         <div class="CheckCont">
                                                                             <div class="weekRow">
                                                                                 <div class="d-flex align-items-center">
-                                                                                    <input type="Time" class="form-control">
+                                                                                    <input type="Time" name="from_time_fri1" class="form-control">
                                                                                     <span class="me-2 ms-2"> - </span>
-                                                                                     <input type="Time" class="form-control">
+                                                                                     <input type="Time" name="to_time_fri1" class="form-control">
                                                                                      <button class="btn removeBtn"><i class="fas fa-trash"></i></button>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="weekappendCont">
+                                                                            <div class="weekappendfriCont weekappendCont">
                                                                             </div>
                                                                         </div>
 
                                                                     </td>
-                                                                    <td><button class="btn weekappend"><i class="fas fa-plus"></i></button></td>
+                                                                    <td><span class="btn weekappendfri"><i class="fas fa-plus"></i></span></td>
                                                                     <td>
                                                                         <div class="dropdown copyBtn">
                                                                           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -652,6 +660,7 @@
                                                                     <th>
                                                                         <div class="form-check">
                                                                           <input class="form-check-input" type="checkbox" checked name="mainWeek" id="sat">
+                                                                          <input type="hidden" value="1" id="sat_total" name="sat_total">
                                                                           <label class="form-check-label" for="sat">sat</label>
                                                                         </div>
                                                                     </th>
@@ -661,18 +670,18 @@
                                                                         <div class="CheckCont">
                                                                             <div class="weekRow">
                                                                                 <div class="d-flex align-items-center">
-                                                                                    <input type="Time" class="form-control">
+                                                                                    <input type="Time" name="from_time_sat1" class="form-control">
                                                                                     <span class="me-2 ms-2"> - </span>
-                                                                                     <input type="Time" class="form-control">
+                                                                                     <input type="Time" name="to_time_sat1" class="form-control">
                                                                                      <button class="btn removeBtn"><i class="fas fa-trash"></i></button>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="weekappendCont">
+                                                                            <div class="weekappendsatCont weekappendCont">
                                                                             </div>
                                                                         </div>
 
                                                                     </td>
-                                                                    <td><button class="btn weekappend"><i class="fas fa-plus"></i></button></td>
+                                                                    <td><span class="btn weekappendsat"><i class="fas fa-plus"></i></span></td>
                                                                     <td>
                                                                         <div class="dropdown copyBtn">
                                                                           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -730,6 +739,8 @@
                                                                     </td>
                                                                 </tr>
                                                             </table>
+                                                             <button class="btn btn-primary">Save</button>
+                                                        </form>
                                                         </div>
                                                         <div class="col-md-5">
                                                             <div class="note">
@@ -750,3 +761,8 @@
           </div>
       </section>
       @endsection
+
+
+           @push('js')
+<script src="{{ asset('frontend/assets/js/dashboard.js')}}"></script>
+@endpush

@@ -9,6 +9,9 @@
     </div>
         <section id="mainContainer">
           <div class="container">
+ <div class="loading" style="display: none;">
+    <div class="loader"></div>
+</div>
               <div class="row align-items-start">
                 <div class="col-md-3">
                       <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">

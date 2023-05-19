@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Student;
+use App\Models\Admin;
+
 use Hash;
 use Auth;
 use Validator;
@@ -86,13 +87,13 @@ class AuthController extends Controller
               
             $email = $request->email;
             $password = $request->password;
-            // $user_type = $request->user_type;
-            // if($user_type=='tutor'){
-            //     $redirect= 'tutor/profile-setup';
-            // }else{
-            //     $redirect= 'student/';
+             $user_type = $request->user_type;
+            if($user_type=='admin'){
+                $redirect= 'admin/dashboard';
+            }else{
+                $redirect= '/';
 
-            // }
+            }
              
             $validator = Validator::make($request->all(), [
                 'email' => 'required|email',
@@ -105,11 +106,15 @@ class AuthController extends Controller
     
             }else{
        
-           if(Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password])){
+          // if(Auth::guard($user_type)->attempt(['email' => $request->email, 'password' => $request->password])){
+
+                if(Auth::guard($user_type)->attempt(['email' => $request->email, 'password' => $request->password])){
+            Auth::guard($user_type)->user()->role = $user_type;
+            \Session::put('role',$user_type);
             return response()->json([
                 'status' => 'success',
                 'message' => 'Login Succesfull', 
-                'redirect_uri' => '/', 
+                'redirect_uri' => $redirect, 
                 'data' => ''
             ]);
 

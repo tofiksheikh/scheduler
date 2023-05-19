@@ -72,7 +72,9 @@
       </nav>
       <div class="signin_form login text-center">
         <div class="container">
-           
+           <div class="loading" style="display: none;">
+    <div class="loader"></div>
+</div>
            <form method="post" id="signup">
                      @csrf
 
@@ -87,6 +89,8 @@
                <div class="form-group">
                    <input type="password"  name="password" class="form-control l_validate l_required check-password"  id="pwd"  err-text="Pleas Enter password" placeholder="Password"><i class="fas fa-lock"></i>
                </div>
+               <input type="hidden" name="user_type" value="user">
+
                <div class="form-group"><button class="btn btn-primary">signup</button></div>
                <div class="form-group"><a href="#" class="forgot-link">sign in</a></div>
                <div class="diviver"><span>OR</span></div>
@@ -248,7 +252,7 @@
 
       });
       if (err == 0) {
-         $(".loader").show();
+         $(".loading").show();
          $.ajax({
             url: "{{url('createAccount')}}",
             method: "POST",
@@ -260,11 +264,11 @@
                // success & error handling
                if (data.status == "success") {
                   toastr.success(data.message);
-             $(".loader").hide();  
+             $(".loading").hide();  
              window.location.replace('{{url('signin')}}');
 
                } else {
-                $(".loader").hide();
+                $(".loading").hide();
                   toastr.error(data.message);
                 //   location.reload();
                }
