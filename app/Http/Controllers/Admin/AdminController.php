@@ -139,4 +139,10 @@ public function userList(){
               'data' => '' ]);
     }
     }
+
+    public function editUser($id)
+    {
+        $user = User::findOrFail($id);
+       return view('Admin/user-edit',compact('user'));
+    }
 }

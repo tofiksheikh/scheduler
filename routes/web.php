@@ -33,6 +33,7 @@ use  App\Http\Controllers\Admin\AdminController;
             Route::get('profile','profile')->name('profile');
             Route::get('user-list', 'userList')->name('user-list');
             Route::delete('delete-user/{id}','delete')->name('delete-user'); 
+            Route::get('edit-user/{id}','editUser')->name('edit-user');
             
             
       // });
@@ -57,7 +58,7 @@ Route::controller(SubjectController::class)->group(function(){
 
 // group of controller
 Route::controller(AuthController::class)->group(function () {
-     
+      Route::get('/', 'index')->name('/');
     Route::get('/signin', 'signin')->name('signin');
     Route::get('/signup', 'signup')->name('signup');
     Route::get('/logout', 'logout')->name('logout');
@@ -72,7 +73,7 @@ Route::controller(AuthController::class)->group(function () {
   
      Route::group(['middleware' => 'UserAuthenticate'], function ()
         {
-              Route::get('/', 'index')->name('/');
+              Route::get('/home', 'index')->name('/home');
               Route::get('/profile', 'getProfile')->name('profile');
               Route::post('/save-phone-number', 'savePhoneNumber')->name('save-phone-number');
               Route::post('/save-profile-information', 'saveProfileInformation')->name('save-profile-information');

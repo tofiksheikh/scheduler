@@ -1,84 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <!-- Required meta tags -->
-      <meta charset="utf-8" />
+<head>
+
+
+   <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link href="{{asset('frontend/assets/images/favicon.png')}}" rel="icon">
+      <link href="{{ asset('frontend/assets/images/favicon.png') }}" rel="icon">
       <!--  CSS Files -->
-      <link href="{{asset('frontend/assets/css/bootstrap.min.css')}}" rel="stylesheet" />
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
+      <link href="{{ asset('frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
+      <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/bootstrap-select.min.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/daterangepicker.css') }}">
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
       <!-- Template Main CSS File -->
-      <link href="{{ asset('frontend/assets/css/style.css')}}" rel="stylesheet" />
-      <title>scheduler</title>
-   </head>
+      <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet" />
+       <title>Appointy</title>
+
+</head>
    <body>
-    <input type="hidden" value="{{url('/')}}" id="base_url">
-      <nav class="navbar navbar-expand-lg ">
-         <div class="container">
-            <a href="index.html" class="logo"><img src="{{ asset('frontend/assets/images/logo.png') }}" alt="" width="185" /></a>
-            <ul class="menu">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Products</a>
-                </li>
-                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Solutions</a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h5>Find the Right Job</h5>
-                                    <p>Millions of jobs. Search by what matters to you and find the one that's right for you.</p>
-                                    <a href="#" class="btn btn-border">Start Using scheduler</a>
-                                </div>
-                                <div class="col-sm-6 text-end">
-                                    <img src="{{ asset('frontend/assets/images/job.jpg') }}" width="240px">
-                                </div>
-                            </div>
-                        </li>
-                        
-                      </ul>
-                </li>
-                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Teams & Companies</a>
-                </li>
-                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Pricing</a>
-                </li>
-                  <li class="nav-item">
-                     <a class="nav-link" aria-current="page" href="#">Resources</a>
-                     <ul class="dropdown-menu">
-                        <li>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h5>Find the Right Job</h5>
-                                    <p>Millions of jobs. Search by what matters to you and find the one that's right for you.</p>
-                                    <a href="#" class="btn btn-border">Start Using scheduler</a>
-                                </div>
-                                <div class="col-sm-6 text-end">
-                                    <img src="{{ asset('frontend/assets/images/job.jpg') }}" width="240px">
-                                </div>
-                            </div>
-                        </li>
-                        
-                      </ul>
-                  </li>
-               </ul>
-            
-            <div class="d-flex">
+        <input type="hidden" value="{{url('/')}}" id="base_url">
 
-                                    @if(Auth::guard('user')->check())
-                              <a class="btn btn-secondry" href="#" tabindex="-1">For Employers</a>
-                              <a class="btn btn-primary" href="{{url('profile')}}" tabindex="-1" style="margin-right: 5px;">Profile</a>
-                                    <a class="btn btn-danger" href="{{url('logout')}}">Log Out</a>
-@else
-   <a class="btn btn-secondry" href="#" tabindex="-1">For Employers</a>
-               <a class="btn btn-primary" href="{{url('signin')}}" tabindex="-1">Sign In</a>
-@endif
-
-              
-            </div>
-         </div>
-      </nav>
+      <nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container">
+    <a class="navbar-brand" href="#"><img src="{{ asset('frontend/assets/images/logo.png') }}"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{url('home')}}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Solutions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Resources</a>
+        </li>
+       
+        @if(Auth::guard('user')->check())
+        <li class="nav-item">
+          <a class="nav-link"href="{{url('profile')}}" tabindex="-1" style="margin-right: 5px;">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-primary" href="{{url('logout')}}">Log Out</a>
+        </li>
+        @else
+         <li class="nav-item">
+          <a class="nav-link btn btn-primary" href="{{url('signin')}}" tabindex="-1">Sign In</a>
+        </li>
+        @endif
+      </ul>
+    </div>
+  </div>
+</nav>

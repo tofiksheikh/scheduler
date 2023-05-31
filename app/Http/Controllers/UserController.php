@@ -13,27 +13,26 @@ class UserController extends Controller
     
 
 
- public function index(){
-     $first_name=isset(Auth::guard('user')->user()->first_name) ? Auth::guard('user')->user()->first_name : '';
-     $last_name=isset(Auth::guard('user')->user()->last_name) ? Auth::guard('user')->user()->last_name : '';
-      // echo $first_name .' '.$last_name.' Login Succesfull';
-         return view('user/dashboard'); 
+  public function index(){
+ //     $first_name=isset(Auth::guard('user')->user()->first_name) ? Auth::guard('user')->user()->first_name : '';
+ //     $last_name=isset(Auth::guard('user')->user()->last_name) ? Auth::guard('user')->user()->last_name : '';
+ //      // echo $first_name .' '.$last_name.' Login Succesfull';
+          return view('user/my_appointy'); 
     }
 
 
     public function getProfile(){
-      $user_id=isset(Auth::guard('user')->user()->id) ? Auth::guard('user')->user()->id : '';
+    $user_id=isset(Auth::guard('user')->user()->id) ? Auth::guard('user')->user()->id : '';
     $user = User::Find($user_id);
     return view('user/profile',compact('user'));
 
     }
 
 
-     public function savePhoneNumber(Request $request){
+ public function savePhoneNumber(Request $request){
     $user_id=isset(Auth::guard('user')->user()->id) ? Auth::guard('user')->user()->id : '';
     $userData = User::where('id','=', $user_id)->first();
    
-    
     $userData->phone = $request->phone_no;
 
     if($userData->save()){

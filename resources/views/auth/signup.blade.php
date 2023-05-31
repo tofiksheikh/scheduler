@@ -1,179 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <!-- Required meta tags -->
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link href="{{ asset('frontend/assets/images/favicon.png') }}" rel="icon">
-      <!--  CSS Files -->
-      <link href="{{ asset('frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
-      <!-- Template Main CSS File -->
-      <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet" />
-      <title>scheduler</title>
-   </head>
-   <body>
-      <nav class="navbar navbar-expand-lg ">
-         <div class="container">
-            <a href="index.html" class="logo"><img src="{{ asset('frontend/assets/images/logo.png') }}" alt="" width="185" /></a>
-            <ul class="menu">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Products</a>
-                </li>
-                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Solutions</a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h5>Find the Right Job</h5>
-                                    <p>Millions of jobs. Search by what matters to you and find the one that's right for you.</p>
-                                    <a href="#" class="btn btn-border">Start Using scheduler</a>
-                                </div>
-                                <div class="col-sm-6 text-end">
-                                    <img src="{{ asset('frontend/assets/images/job.jpg') }}" width="240px">
-                                </div>
-                            </div>
-                        </li>
-                        
-                      </ul>
-                </li>
-                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Teams & Companies</a>
-                </li>
-                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Pricing</a>
-                </li>
-                  <li class="nav-item">
-                     <a class="nav-link" aria-current="page" href="#">Resources</a>
-                     <ul class="dropdown-menu">
-                        <li>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h5>Find the Right Job</h5>
-                                    <p>Millions of jobs. Search by what matters to you and find the one that's right for you.</p>
-                                    <a href="#" class="btn btn-border">Start Using scheduler</a>
-                                </div>
-                                <div class="col-sm-6 text-end">
-                                    <img src="{{ asset('frontend/assets/images/job.jpg') }}" width="240px">
-                                </div>
-                            </div>
-                        </li>
-                        
-                      </ul>
-                  </li>
-               </ul>
-            
-            <div class="d-flex">
-               <a class="btn btn-secondry" href="#" tabindex="-1">For Employers</a>
-               <a class="btn btn-primary" href="#" tabindex="-1">Sign In</a>
-            </div>
-         </div>
-      </nav>
-      <div class="signin_form login text-center">
-        <div class="container">
-           <div class="loading" style="display: none;">
-    <div class="loader"></div>
-</div>
-           <form method="post" id="signup">
-                     @csrf
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="{{ asset('frontend/auth/images/favicon.png') }}" rel="icon">
+  <!--  CSS Files -->
+  <link href="{{ asset('frontend/auth/css/bootstrap.min.css') }}" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('frontend/auth/css/owl.carousel.min.css') }}">
+  <!-- Template Main CSS File -->
+  <link href="{{ asset('frontend/auth/css/style.css') }}" rel="stylesheet" />
+  <title>Welcome to Appointy</title>
+</head>
+<body>   
 
-            <h3>Sign to Scheduler Center</h3>
-           <h5>By continuing, you agree to our Terms of Use and Privacy Policy.</h5>
-                <div class="form-group">
-                   <input type="text" name="full_name" id="f_name" class="form-control l_validate l_required" err-text="Pleas Enter  Name" placeholder="Your Name"><i class="far fa-user"></i>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container">
+    <a class="navbar-brand" href="#"><img src="{{ asset('frontend/auth/images/logo.png') }}"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Solutions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Resources</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-primary" href="{{url('signin')}}" >Sign In</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section id="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 col-lg-6 col-md-8 ms-auto">
+                <div class="text-left"><h2>Sign up with Appointy Center</h2>
+                <hr>
+                <p>Enter your email to get started.</p></div>
+                <form method="post" id="signup" class="mt-4">
+                     @csrf
+                    <!-- <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="" class="form-control" name="">
+                    </div> -->
+
+                    <div class="form-group">
+                        <label>Full Name</label>
+                   <input type="text" name="full_name" id="f_name" class="form-control l_validate l_required" err-text="Pleas Enter  Name" placeholder="">
                </div>
                <div class="form-group">
-                   <input type="email" name="email" class="form-control l_validate l_required l_chkEmail"   err-text="Pleas Enter Email"  id="email"   placeholder="Email Address"><i class="far fa-envelope"></i>
+                <label>Email Address</label>
+                   <input type="email" name="email" class="form-control l_validate l_required l_chkEmail"   err-text="Pleas Enter Email"  id="email"   placeholder="">
                </div>
                <div class="form-group">
-                   <input type="password"  name="password" class="form-control l_validate l_required check-password"  id="pwd"  err-text="Pleas Enter password" placeholder="Password"><i class="fas fa-lock"></i>
+                <label>Password</label>
+                   <input type="password"  name="password" class="form-control l_validate l_required check-password"  id="pwd"  err-text="Pleas Enter password" placeholder="">
                </div>
                <input type="hidden" name="user_type" value="user">
 
-               <div class="form-group"><button class="btn btn-primary">signup</button></div>
-               <div class="form-group"><a href="#" class="forgot-link">sign in</a></div>
-               <div class="diviver"><span>OR</span></div>
-
-               <div class="form-group social-login">
-                   <a href="#" class="btn facebook"><img src="{{ asset('frontend/assets/images/facebook.png') }}"> Continue With Facebook</a>
-               </div>
-               <div class="form-group social-login">
-                   <a href="#" class="btn google"><img src="{{ asset('frontend/assets/images/google.png') }}"> Continue With Google</a>
-               </div>
-               <div class="form-group">
-                   <p>Are You Hiring? <a href="#">Post Jobs</a></p>
-               </div>
-           </form>
-        </div>
-      </div>
-     
-      <footer>
-         <div class="container">
-            <div class="footer-inner">
-               <div class="row">
-                  <div class="col">
-                    <a href="#" class="footer-logo"><img src="{{ asset('frontend/assets/images/logo.png') }}"></a>
-                    <select class="form-select" aria-label="Default select example">
-                      <option selected>India</option>
-                      <option value="1">Argentina</option>
-                      <option value="2">Australia</option>
-                      <option value="3">België (Nederlands)</option>
-                    </select>
-                  </div>
-                  <div class="col">
-                     <h4>Community</h4>
-                    <ul class="">
-                        <li><a href="#" target="_blank">Help / Contact Us</a></li>
-                        <li><a href="#" target="_blank">Guidelines</a></li>
-                        <li><a href="#" target="_top">Terms of Use</a></li>
-                        <li><a href="#" target="_top">Privacy &amp; Cookies (New)</a></li>
-                        <li><a href="#" target="_top">Privacy Center</a></li>
-                        <li><a href="#">Do Not Sell My Personal Information</a></li>
-                        <li><a href="#">Cookie Consent Tool</a></li>
-                    </ul>
-                     
-                  </div>
-                  <div class="col ">
-                     <h4>Employers</h4>
-                     <ul>
-                        <li><a href="#">Get a FREE Employer </a></li>
-                        <li><a href="#">Account </a></li>
-                        <li><a href="#">Employer Centre</a></li>
-                        <li><a href="#">Post a Job </a></li>
-                     </ul>
-                  </div>
-                  <div class="col ">
-                     <h4>scheduler</h4>
-                     <ul>
-                        <li><a href="#">About / Press </a></li>
-                        <li><a href="#">Blog </a></li>
-                        <li><a href="#">Grievance Officer - India</a></li>
-                     </ul>
-                  </div>
-                   <div class="col ">
-                     <h4>Work With Us</h4>
-                     <ul>
-                        <li><a href="#">Advertisers</a></li>
-                        <li><a href="#">Developers </a></li>
-                        <li><a href="#">Careers</a></li>
-                     </ul>
-                  </div>
-               </div>
-           </div>
-       </div>
-   </footer>
-   <div class="footer_bottom">
-    <div class="container">
-           <div class="footer-bottom text-center">
-              <p>Copyright © 2008-2022, scheduler, Inc. "scheduler" and logo are registered trademarks of scheduler, Inc</p>
-           </div>
+                    
+                    <button class="btn bg-white loginBtn mt-4">Get Started</button>
+                    <div class="or text-center mt-3 mb-3">OR</div>
+                    <div class="d-flex justify-content-between social_btn">
+                        <a href="#" class="btn bg-white"><img src="{{ asset('frontend/auth/images/google.png') }}"> Continue with Google</a>
+                        <a href="#" class="btn bg-white"><img src="{{ asset('frontend/auth/images/facebook.png') }}"> Continue with facebook</a>
+                    </div>
+                    <p class="text-center mt-3">Already have an account &nbsp;?  <a href="{{url('signin')}}" class="text-white">Login</a></p>
+                </form>
+            </div>
+           
         </div>
     </div>
-        
-      <!--  JS Files -->
-      <script src="{{ asset('frontend/assets/js/jquery.min.js') }}"></script>
-      <script src="{{asset('frontend/assets/js/bootstrap.bundle.min.js') }}"></script>
+
+</section>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="#"><img src="{{ asset('frontend/auth/images/footer-logo.png') }}"></a>
+                <p class="mt-3">Lorem Ipsum is simply dummy text of the printing</p>
+            </div>
+             <div class="col-md-3">
+                <h5>Community</h5>
+                <ul>
+                    <li><a href="#">Community</a></li>
+                </ul>
+             </div>
+             <div class="col-md-3">
+                <h5>Site Map</h5>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="#">Team & Companies</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Resources</a></li>
+                </ul>
+             </div>
+             <div class="col-md-3">
+                <h5>Contacts</h5>
+                <ul>
+                    <li><a href="#">+555 5678 12340</a></li>
+                    <li><a href="#">info@yourmail.com</a></li>
+                    <li><a href="#">info@yourmail.com</a></li>
+                    
+                </ul>
+             </div>
+        </div>
+    </div>
+</footer>
+<div class="bottofooter">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">Copyright © 2023 CipherSol. All Rights Reserved</div>
+            <div class="col-md-6 text-end"><a href="#">Terms of service </a>  |  <a href="#"> Privacy policy</a>  |  <a href="#"> Login & Register</a></div>
+        </div>
+    </div>
+</div>
+
+
+  <!--  JS Files -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src="{{asset('frontend/auth/js/bootstrap.bundle.min.js') }}"></script>
       <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css'>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
@@ -279,5 +239,5 @@
    }
 </script>
 
-   </body>
+</body>
 </html>

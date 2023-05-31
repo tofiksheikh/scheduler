@@ -13,6 +13,11 @@ use Validator;
 use Session;
 class AuthController extends Controller
 {
+
+     public function index(){
+   
+         return view('auth/landing'); 
+    }
     
     public function signup(){
         return view('auth/signup');
@@ -91,7 +96,7 @@ class AuthController extends Controller
             if($user_type=='admin'){
                 $redirect= 'admin/dashboard';
             }else{
-                $redirect= '/';
+                $redirect= '/home';
 
             }
              

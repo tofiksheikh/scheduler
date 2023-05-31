@@ -68,7 +68,7 @@
  -->                                                        <td>
                                                             <ul class="list-inline font-size-20 contact-links mb-0">
                                                                 <li class="list-inline-item px-2">
-                                                                  <a class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" href="">
+                                                                  <a class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" href="{{route('admin.edit-user',['id'=>$user->id])}}">
 
                                     <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
 
@@ -91,7 +91,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                <ul class="pagination pagination-rounded justify-content-center mt-4">
+                                                <!-- <ul class="pagination pagination-rounded justify-content-center mt-4">
                                                     <li class="page-item disabled">
                                                         <a href="javascript: void(0);" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
                                                     </li>
@@ -113,7 +113,7 @@
                                                     <li class="page-item">
                                                         <a href="javascript: void(0);" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
                                                     </li>
-                                                </ul>
+                                                </ul> -->
                                             </div>
                                         </div>
                                     </div>
