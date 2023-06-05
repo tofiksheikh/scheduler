@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Event;
+use App\Models\Countrie;
 use Hash;
 use Auth;
 use Validator;
@@ -24,7 +26,9 @@ class UserController extends Controller
     public function getProfile(){
     $user_id=isset(Auth::guard('user')->user()->id) ? Auth::guard('user')->user()->id : '';
     $user = User::Find($user_id);
-    return view('user/profile',compact('user'));
+    $countries = Countrie::All();
+
+    return view('user/profile',compact('user','countries'));
 
     }
 
@@ -71,7 +75,7 @@ class UserController extends Controller
    
     $userData->country = $request->country;
     $userData->time_zone = $request->time_zone;
-
+$userData->description = $request->description;
     if($request->profile_image){
         $file = $request->file('profile_image');
         $file->getClientOriginalName();
@@ -289,5 +293,80 @@ for ($i=1; $i < $satT+1; $i++) {
 //print_r(json_decode(json_encode($mysunObj),true));
 }
 
+public function addEvent(){
+    return view('user/add_event');
+}
+
+
+public function addEventForm(){
+
+$countries = Countrie::All();
+    return view('user/add_event_form',compact('countries'));
+}
+
+public function saveEventForm(Request $request){
+ $event = new Event;
+      $user_id=isset(Auth::guard('user')->user()->id) ? Auth::guard('user')->user()->id : '';
+if($request->description == ""){
+    return response()->json([ 
+              'status' => 'failed',
+              'message' => 'Plase Enter Event Description',
+              'redirect_uri' => '/', 
+              'data' => '' ]);
+}
+if($request->event_name == ""){
+    return response()->json([ 
+              'status' => 'failed',
+              'message' => 'Plase Enter Event Name',
+              'redirect_uri' => '/', 
+              'data' => '' ]);
+}
+if($request->event_link == ""){
+    return response()->json([ 
+              'status' => 'failed',
+              'message' => 'Plase Enter Event Link',
+              'redirect_uri' => '/', 
+              'data' => '' ]);
+}
+if($request->country == ""){
+    return response()->json([ 
+              'status' => 'failed',
+              'message' => 'Plase select Event Location',
+              'redirect_uri' => '/', 
+              'data' => '' ]);
+}
+if($request->color == ""){
+    return response()->json([ 
+              'status' => 'failed',
+              'message' => 'Plase select Event Color',
+              'redirect_uri' => '/', 
+              'data' => '' ]);
+}
+    $event->event_name = $request->event_name;
+    $event->description = $request->description;
+    $event->event_link = $request->event_link;
+    $event->country = $request->country;
+    $event->color = $request->color;
+    $event->event_type = $request->event_type;
+    $event->user_id = $user_id;
+   
+   //$event->country = $request->country;
+   
+
+
+    if($event->save()){
+        return response()->json([
+            'status' => 'success',
+             'message' => 'Event Create Succesfull',
+             'redirect_uri' => '/', 
+             'data' => "" ]);
+     }else{
+         return response()->json([
+             'status' => 'failed',
+              'message' => 'Somthing went wrong',
+              'redirect_uri' => '/', 
+              'data' => '' ]);
+    }
+ }
 
 }

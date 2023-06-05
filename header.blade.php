@@ -56,7 +56,3 @@
     </div>
   </div>
 </nav>
-
-   <div class="loading" style="display: none;">
-    <div class="loader"></div>
-</div>

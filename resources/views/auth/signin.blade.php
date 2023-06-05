@@ -44,6 +44,10 @@
 </nav>
 
 <section id="login">
+
+     <div class="loading" style="display: none;">
+    <div class="loader"></div>
+</div>
     <div class="container">
         <div class="row">
             <div class="col-xl-5 col-lg-6 col-md-8 ms-auto">

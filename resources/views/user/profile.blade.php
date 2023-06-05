@@ -63,7 +63,7 @@
                  <div class="col-md-12">
                     <div class="form-group">
                         <label>Welcome Message <i class="fas fa-info-circle"></i></label>
-                        <textarea class="form-control"></textarea>
+                        <textarea class="form-control" name="description" >{{$user->description}}</textarea>
                     </div>
                 </div>
                  <div class="col-md-6">
@@ -106,14 +106,24 @@
                  <div class="col-md-6">
                     <div class="form-group">
                         <label>Country </label>
-                        <select name="country" id="country" class="selectpicker">
+                        <select name="country" id="country" class="selectpicker" data-live-search="true">
+                             @foreach($countries as $countrie )
+                                @if($countrie->id == $user->country )
+                                <option value="{{$countrie->id}}" selected>{{$countrie->name}}</option>
+
+                                 @else
+                                  <option value="{{$countrie->id}}" >{{$countrie->name}}</option>
+
+                                 @endif
+
+                                    @endforeach
                                     
-                                    <option value="1" {{(1 == $user->country ) ? 'selected' : ''}}>India</option>
+                                   <!--  <option value="1" {{(1 == $user->country ) ? 'selected' : ''}}>India</option>
                                     <option value="2" {{(2 == $user->country ) ? 'selected' : ''}}>UK</option>
                                     <option value="3" {{(3 == $user->country ) ? 'selected' : ''}}>USA</option>
                                     <option value="4" {{(4 == $user->country ) ? 'selected' : ''}}>Australia</option>
                                     <option value="5" {{(5 == $user->country ) ? 'selected' : ''}}>Africa</option>
-                                    <option value="6" {{(6 == $user->country ) ? 'selected' : ''}}>Saudi Arabia</option>
+                                    <option value="6" {{(6 == $user->country ) ? 'selected' : ''}}>Saudi Arabia</option> -->
                                  </select>
                     </div>
                 </div>

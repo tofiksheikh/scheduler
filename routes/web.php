@@ -82,6 +82,9 @@ Route::controller(AuthController::class)->group(function () {
               Route::post('/change-password', 'changePassword')->name('change-password');
               Route::get('/delete-account','deleteAccount')->name('delete-account');
               Route::post('/set-custom-hours', 'setCustomHours')->name('set-custom-hours');
+               Route::get('/add-event', 'addEvent')->name('add-event');
+              Route::get('/add-event-form/{id}', 'addEventForm')->name('add-event-form');
+              Route::post('/save-event-form', 'saveEventForm')->name('save-event-form');
         });
 
 
